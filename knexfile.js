@@ -4,8 +4,21 @@ module.exports = {
 
   development: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      filename: './dev.sqlite3'
+      filename: './data/auth.db3'
+    },
+    migrations: {
+      destination: './data/migrations'
+    },
+    seeds: {
+      destination: './data/seeds'
+    },
+    pool: {
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foriegn_keys=ON', done) // turn on FK enforcement
+      }
     }
   },
 
