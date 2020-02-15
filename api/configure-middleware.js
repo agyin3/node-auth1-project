@@ -11,7 +11,7 @@ function logger(req,res, next){
 }
 
 module.exports = server => {
-    server.use(express().json())
+    server.use(express.json())
     server.use(helmet())
     server.use(cors())
     server.use(logger)
