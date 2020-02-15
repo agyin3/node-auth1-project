@@ -7,5 +7,7 @@ router.use('/auth', authRouter)
 router.use('/users', userRouter)
 
 router.get('/', (req,res) => {
-    res.json({api: 'Welcome to part town'})
+    res.json({api: 'Welcome to party town'})
 })
+
+module.exports = router
