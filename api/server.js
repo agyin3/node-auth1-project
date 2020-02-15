@@ -7,7 +7,7 @@ const server = express()
 
 configureMiddleware(server)
 
-server.use('/', apiRouter)
+server.use('/api', apiRouter)
 
 
 module.exports = server
