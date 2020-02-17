@@ -50,7 +50,7 @@ server.use('/api/auth', authRouter)
 server.use('/api/users', userRouter)
 
 server.get('/', (req,res) => {
-    res.json({api: 'Welcome to party town'})
+    res.send({api: 'Welcome to party town'})
 })
 
 
