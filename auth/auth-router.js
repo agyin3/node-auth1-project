@@ -18,7 +18,6 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    console.log(req.body)
     const {username, password} = req.body
 
     if(!username && !password){
