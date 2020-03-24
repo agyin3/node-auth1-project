@@ -3,10 +3,13 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     useNullAsDefault: true,
     connection: {
-      filename: './data/auth.db3'
+      host: '127.0.0.1',
+      username: 'postgres',
+      password: process.env.DB_URL,
+      database: 'auth'
     },
     migrations: {
       directory: './data/migrations'
@@ -15,10 +18,8 @@ module.exports = {
       directory: './data/seeds'
     },
     pool: {
-      afterCreate: (conn, done) => {
-        // runs after a connection is made to the sqlite engine
-        conn.run('PRAGMA foriegn_keys=ON', done) // turn on FK enforcement
-      }
+      min: 2,
+      max: 10
     }
   },
 
@@ -39,18 +40,18 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
+      directory: './data/migrations',
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: './data/seeds'
     }
   }
 

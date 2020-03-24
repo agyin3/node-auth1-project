@@ -110,4 +110,4 @@ dist
 .vscode-test
 
 # SQLite3 DB
-.db3
+*.db3
