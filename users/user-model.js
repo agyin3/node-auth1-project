@@ -30,6 +30,9 @@ function findById(id){
 function add(user){
     console.log(user)
     return db('users')
-        .insert(user)
-        .then(id => findById(id[0]))
+        .insert(user, 'id')
+        .then(ids => {
+            const [id] = ids
+            findById(id)
+        })
 }
